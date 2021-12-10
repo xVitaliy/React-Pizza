@@ -2,8 +2,10 @@ import React from 'react';
 import Categories from "../Categories";
 import SortPopup from "../SortPopup";
 import PizzaBlock from "../PizzaBlock";
+import { useSelector } from "react-redux";
 
-const Home = ({ items }) => {
+const Home = () => {
+    const items = useSelector(state => state.pizza.pizza)
     return (
         <div className="container">
             <div className="content__top">
