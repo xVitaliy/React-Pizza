@@ -1,10 +1,14 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSort } from "../redux/filter";
 
 const SortPopup = ({ items }) => {
     const [ visiblePopup, setVisiblePopup ] = useState(false)
-    const [ activeItem, setActiveItem ] = useState(0)
+    const activeItem = useSelector(state => state.filters.index)
     const sortRef = useRef()
     const activeLabel = items[activeItem].name
+
+    const dispatch = useDispatch()
 
     const toggleVisiblePopup = () => {
         setVisiblePopup(prevState => !prevState)
@@ -21,7 +25,8 @@ const SortPopup = ({ items }) => {
     }, [])
 
     const onSelectItem = (index) => {
-        setActiveItem(index)
+        const sort = items[index]
+        dispatch(toggleSort({ index, sort }))
         setVisiblePopup(false)
     }
     return (

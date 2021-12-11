@@ -3,9 +3,15 @@ import axios from "axios";
 
 export const fetchPizza = createAsyncThunk(
     'pizza/fetchPizza',
-    async (_, { rejectWithValue }) => {
+    async ({ category, sortBy, index }, { rejectWithValue }) => {
+        console.log(category)
         try {
-            const response = await axios.get('http://localhost:3001/pizzas');
+
+            const url = `http://localhost:3001/pizzas?${
+                category !== 0 ? `category=${ category - 1 }` : ''
+            }&_sort=${ sortBy }&_order=asc`
+            // }
+            const response = await axios.get(url);
 
             if (response.status !== 200) {
                 throw new Error('Sorry, server error')
@@ -20,16 +26,7 @@ export const fetchPizza = createAsyncThunk(
 const pizzaSlice = createSlice({
     name: 'pizza',
     initialState: {
-        pizza: [ {
-            "id": '',
-            "imageUrl": "",
-            "name": "",
-            "types": [],
-            "sizes": [],
-            "price": Number(),
-            "category": '',
-            "rating": ''
-        } ],
+        pizza: [],
         status: null,
         error: null
     },
@@ -40,11 +37,11 @@ const pizzaSlice = createSlice({
     },
     extraReducers: {
         [fetchPizza.pending]: (state) => {
-            state.status = 'Loading...'
+            state.status = 'loading'
             state.error = null
         },
         [fetchPizza.fulfilled]: (state, action) => {
-            state.status = 'fulfilled'
+            state.status = 'resolve'
             state.pizza = action.payload
         },
         [fetchPizza.rejected]: (state, action) => {
