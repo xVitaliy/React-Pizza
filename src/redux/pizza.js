@@ -6,7 +6,7 @@ export const fetchPizza = createAsyncThunk(
     async ({ category, sortBy, index }, { rejectWithValue }) => {
         try {
 
-            const url = `http://localhost:3001/pizzas?${
+            const url = `/pizzas?${
                 category !== 0 ? `category=${ category - 1 }` : ''
             }&_sort=${ sortBy }&_order=asc`
 
@@ -29,11 +29,7 @@ const pizzaSlice = createSlice({
         status: null,
         error: null
     },
-    reducers: {
-        // setPizzas(state, action) {
-        //     state.pizza = action.payload
-        // }
-    },
+    reducers: {},
     extraReducers: {
         [fetchPizza.pending]: (state) => {
             state.status = 'loading'
@@ -50,7 +46,7 @@ const pizzaSlice = createSlice({
     }
 })
 
-export const { setPizzas } = pizzaSlice.actions
+// export const { setPizzas } = pizzaSlice.actions
 export default pizzaSlice.reducer
 
 

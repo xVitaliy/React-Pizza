@@ -8,12 +8,20 @@ const cartSlice = createSlice({
         totalCount: 0,
     },
     reducers: {
-        setTotalPrice(state, action) {
-            state.totalPrice += action.payload
+        clearCart(state, action) {
+            state.items = {}
+            state.totalPrice = 0
+            state.totalCount = 0
         },
-        setTotalCount(state, action) {
-            state.totalCount += action.payload
+
+        removeCart(state, action) {
+            const { id, items, price } = action.payload
+            const sum = items * price
+            state.totalPrice -= sum
+            state.totalCount -= items
+            delete state.items[id]
         },
+
         addPizzaCart(state, action) {
             const newItems = {
                 ...state.items,
@@ -26,8 +34,19 @@ const cartSlice = createSlice({
             state.totalCount = arrayPizza.length
             state.totalPrice = arrayPizza.reduce((accum, item) => accum + item.price, 0)
         },
+
+        onMinusItem(state, action) {
+            const index = action.payload.id
+            if (state.items[index].length === 1) {
+                return
+            }
+            state.items[index].pop()
+            state.totalCount -= 1
+            state.totalPrice -= action.payload.price
+            console.log(action.payload.price)
+        }
     }
 })
 
-export const { addPizzaCart } = cartSlice.actions
+export const { addPizzaCart, clearCart, removeCart, onMinusItem, onPlusItem } = cartSlice.actions
 export default cartSlice.reducer

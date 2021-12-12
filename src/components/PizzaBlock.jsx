@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import classNames from "classnames";
 import PropTypes from 'prop-types'
 import Button from "./Button";
-import { useSelector } from "react-redux";
 
 const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, onClickAddPizza, cartItemsLength }) => {
     const [ activeType, setActiveType ] = useState(types[0])
