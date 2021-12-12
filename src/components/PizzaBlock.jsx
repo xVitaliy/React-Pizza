@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import classNames from "classnames";
 import PropTypes from 'prop-types'
+import Button from "./Button";
+import { useSelector } from "react-redux";
 
-const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, category, rating }) => {
-    const availableTypes = [ 'тонкое', 'традиционное' ];
+const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, onClickAddPizza, cartItemsLength }) => {
     const [ activeType, setActiveType ] = useState(types[0])
-    const [ activeSize, setActiveSize ] = useState(sizes[0])
+    const [ activeSize, setActiveSize ] = useState(0)
+    const availableTypes = [ 'тонкое', 'традиционное' ];
     const availableSizes = [ 26, 30, 40 ];
 
     const onSelectType = index => {
@@ -15,6 +17,17 @@ const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, category, rating 
         setActiveSize(index)
     }
 
+    const onAddPizza = () => {
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size: availableSizes[activeSize],
+            type: availableTypes[activeType],
+        }
+        onClickAddPizza(obj)
+    }
     return (
         <div className="pizza-block">
             <img
@@ -46,8 +59,9 @@ const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, category, rating 
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от { price }</div>
-                <div className="button button--outline button--add">
+                <div className="pizza-block__price">от { price } ₽</div>
+                <Button onClick={ onAddPizza }
+                        className="button--add" outline>
                     <svg
                         width="12"
                         height="12"
@@ -61,8 +75,8 @@ const PizzaBlock = ({ id, imageUrl, name, types, sizes, price, category, rating 
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
-                </div>
+                    { cartItemsLength && <i>{ cartItemsLength }</i> }
+                </Button>
             </div>
         </div>
     );

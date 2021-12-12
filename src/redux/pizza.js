@@ -4,13 +4,12 @@ import axios from "axios";
 export const fetchPizza = createAsyncThunk(
     'pizza/fetchPizza',
     async ({ category, sortBy, index }, { rejectWithValue }) => {
-        console.log(category)
         try {
 
             const url = `http://localhost:3001/pizzas?${
                 category !== 0 ? `category=${ category - 1 }` : ''
             }&_sort=${ sortBy }&_order=asc`
-            // }
+
             const response = await axios.get(url);
 
             if (response.status !== 200) {
