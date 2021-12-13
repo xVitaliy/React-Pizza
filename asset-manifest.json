@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/React-Pizza/static/css/main.d6074c39.chunk.css",
+    "main.js": "/React-Pizza/static/js/main.ec2de81f.chunk.js",
+    "main.js.map": "/React-Pizza/static/js/main.ec2de81f.chunk.js.map",
+    "runtime-main.js": "/React-Pizza/static/js/runtime-main.b3485490.js",
+    "runtime-main.js.map": "/React-Pizza/static/js/runtime-main.b3485490.js.map",
+    "static/js/2.9d2907eb.chunk.js": "/React-Pizza/static/js/2.9d2907eb.chunk.js",
+    "static/js/2.9d2907eb.chunk.js.map": "/React-Pizza/static/js/2.9d2907eb.chunk.js.map",
+    "static/js/3.aca73329.chunk.js": "/React-Pizza/static/js/3.aca73329.chunk.js",
+    "static/js/3.aca73329.chunk.js.map": "/React-Pizza/static/js/3.aca73329.chunk.js.map",
+    "index.html": "/React-Pizza/index.html",
+    "static/css/main.d6074c39.chunk.css.map": "/React-Pizza/static/css/main.d6074c39.chunk.css.map",
+    "static/js/2.9d2907eb.chunk.js.LICENSE.txt": "/React-Pizza/static/js/2.9d2907eb.chunk.js.LICENSE.txt",
+    "static/media/app.scss": "/React-Pizza/static/media/ProximaNova-Regular.d97f8f32.eot",
+    "static/media/empty-cart.db905d1f.png": "/React-Pizza/static/media/empty-cart.db905d1f.png",
+    "static/media/pizza-logo.56ac8703.svg": "/React-Pizza/static/media/pizza-logo.56ac8703.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3485490.js",
+    "static/js/2.9d2907eb.chunk.js",
+    "static/css/main.d6074c39.chunk.css",
+    "static/js/main.ec2de81f.chunk.js"
+  ]
+}
