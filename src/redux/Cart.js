@@ -43,7 +43,6 @@ const cartSlice = createSlice({
             state.items[index].pop()
             state.totalCount -= 1
             state.totalPrice -= action.payload.price
-            console.log(action.payload.price)
         }
     }
 })

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../redux/Cart";
 import cartImg from '../../assets/img/empty-cart.png'
 import { Link } from "react-router-dom";
+import Button from "../Button";
 
 const Cart = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,9 @@ const Cart = () => {
         }
     }
 
+    const payForPizza = () => {
+        console.log(items)
+    }
 
     return (
         <div className="content">
@@ -88,9 +92,9 @@ const Cart = () => {
 
                                         <span>Вернуться назад</span>
                                     </Link>
-                                    <div className="button pay-btn">
+                                    <Button onClick={ payForPizza } className="button pay-btn">
                                         <span>Оплатить сейчас</span>
-                                    </div>
+                                    </Button>
                                 </div>
                             </div>
                         </div>
